@@ -1,15 +1,18 @@
 import React from 'react';
 import { Loading, ScrollRankingBoard } from '@jiaminghi/data-view-react'
 
-export default class Screen extends React.Component {
+export default class Rank extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             config: {
                 data: [],
-                rowNum: 10
+                rowNum: 10,
+                waitTime:1000
             }
         }
+    }
+    componentDidMount(){
         this.getData()
     }
     getData() {
@@ -33,7 +36,7 @@ export default class Screen extends React.Component {
                 {
                     this.state.config.data.length === 0 ?
                         <Loading /> :
-                        <ScrollRankingBoard style={{ width: '500px', marginLeft: '30px' }} config={this.state.config} />
+                        <ScrollRankingBoard config={this.state.config} />
                 }
             </>)
     }
