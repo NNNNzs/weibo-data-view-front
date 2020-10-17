@@ -16,7 +16,7 @@ export default class Rank extends React.Component {
         this.getData()
     }
     getData() {
-        fetch('/api/getWeibo')
+        fetch('/weibo/getTodayTop')
             .then(res => res.json())
             .then(list => {
                 const rankData = list.map(e => {

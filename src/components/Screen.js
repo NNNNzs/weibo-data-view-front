@@ -5,7 +5,9 @@ import Layout from './Layout'
 export default class Screen extends Component {
     render() {
         return (
-        <FullScreenContainer> <Layout /> </FullScreenContainer>
+            <FullScreenContainer>
+                <Layout />
+            </FullScreenContainer>
         )
     }
 }
