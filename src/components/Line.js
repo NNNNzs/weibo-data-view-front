@@ -7,12 +7,20 @@ export default class MyLine extends React.Component {
     constructor(props) {
         super(props);
         this.dom = null
+        this.line = null
+        this.state = {
+            keyword: ''
+        }
     }
-    componentDidMount() {
-        this.getData()
+    componentDidUpdate(prevProps) {
+        if (this.props.keyword && this.props.keyword !== this.state.keyword) {
+            const { keyword } = this.props;
+            this.setState({ keyword });
+            this.getData(keyword)
+        }
     }
-    getData() {
-        fetch('/weibo/getTodayTop?title=周杰伦新歌喜提油管第一')
+    getData(keyword) {
+        fetch(`/weibo/getTopByTitle?title=${keyword}`)
             .then((res) => res.json())
             .then((data) => {
                 data = data.map(e => {
@@ -21,23 +29,22 @@ export default class MyLine extends React.Component {
                         dateTime: moment(e.time).format('HH:mm:ss')
                     }
                 })
+                if (this.line) {
+                    this.line.changeData(data)
+                    return true
+                }
                 const line = new Line(this.dom, {
                     data,
                     padding: '0',
                     xField: 'dateTime',
                     yField: 'num',
                     theme: 'dark',
+                    title: keyword,
                     xAxis: {
-                        // type: 'dateTime',
-                        tickCount: 5,
+                        tickCount: 10,
                     },
-                    
-                    // slider: {
-                    //     start: 0.1,
-                    //     end: 0.5,
-                    // },
                 });
-
+                this.line = line;
                 line.render();
             });
 

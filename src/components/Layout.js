@@ -4,7 +4,19 @@ import '../styles/Layout.less'
 import Rank from './Rank'
 import WordCloud from './WordCloud'
 import Line from './Line'
+// import MyIframe from './iframe'
+import InfoFlow from './InfoFlow/index.js'
+
 export default class Layout extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            keyword: null
+        }
+    }
+    changeLine(keyword) {
+        this.setState({ keyword })
+    }
     render() {
         return (
             <div className="layout">
@@ -24,10 +36,19 @@ export default class Layout extends React.Component {
                             color={['rgb(62,150,165)', 'rgb(62,150,165)']}
                             backgroundColor='black'
                         >
-                            <WordCloud />
+                            <WordCloud onOnchange={(keyword) => { this.changeLine(keyword) }} />
                         </BorderBox3>
                     </div>
-                    <div className="width30"></div>
+                    <div className="width30">
+                        <BorderBox3
+                            color={['rgb(62,150,165)', 'rgb(62,150,165)']}
+                            backgroundColor='black'
+                            className='scroll'
+                        >
+                            {/* <MyIframe keyword={this.state.keyword} /> */}
+                            <InfoFlow keyword={this.state.keyword} />
+                        </BorderBox3>
+                    </div>
                 </div>
                 <div className="row2">
                     <div className="width30"></div>
@@ -36,7 +57,8 @@ export default class Layout extends React.Component {
                             color={['rgb(62,150,165)', 'rgb(62,150,165)']}
                             backgroundColor='black'
                         >
-                            <Line />
+                            <Line keyword={this.state.keyword} />
+
                         </BorderBox3>
 
                     </div>

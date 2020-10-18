@@ -5,18 +5,35 @@ export default class MyWordCloud extends React.Component {
     constructor(props) {
         super(props)
         this.myDom = null;
-
         this.state = {
+            list: []
         }
     }
+    getRandomTitle() {
+        this.setKeyword()
+        setInterval(() => {
+            this.setKeyword()
+        }, 50000)
+    }
+    setKeyword() {
+        let keyword = this.state.list.shift();
+        this.props.onOnchange(keyword)
+    }
     componentDidMount() {
-        fetch('/weibo/getTodayTopCount')
+        fetch('/weibo/getCurrentTop')
             .then(res => res.json())
             .then(list => {
-                const container = this.myDom
+                list = list.filter(e => e.num > 0)
+
+                const container = this.myDom;
+                this.setState({
+                    list: list.map(e => e.title)
+                })
+                this.getRandomTitle()
+
                 const wordCloud = new WordCloud(container, {
-                    data:list,
-                    autoFit:true,
+                    data: list,
+                    autoFit: true,
                     wordField: 'title',
                     weightField: 'num',
                     color: '#6262ff',
@@ -41,6 +58,7 @@ export default class MyWordCloud extends React.Component {
             })
     }
     render() {
-        return <div style={{width:'100%',height:'100%'}} ref={ref => { this.myDom = ref }}></div>
+        return <div style={{ width: '100%', height: '100%' }} ref={ref => { this.myDom = ref }}></div>
+
     }
 }
