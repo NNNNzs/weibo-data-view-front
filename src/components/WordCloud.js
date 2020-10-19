@@ -8,12 +8,13 @@ export default class MyWordCloud extends React.Component {
         this.state = {
             list: []
         }
+        this.timer = null
     }
     getRandomTitle() {
         this.setKeyword()
         setInterval(() => {
             this.setKeyword()
-        }, 50000)
+        }, 1000 *60)
     }
     setKeyword() {
         let keyword = this.state.list.shift();

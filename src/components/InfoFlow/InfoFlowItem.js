@@ -64,7 +64,11 @@ export class InfoFlowItem extends React.Component {
 }
 
 export default (props) => {
-    return (<>
+    // if(props.item.mblog.pics){
+    //     console.log(props.item.mblog.user.screen_name)
+    //     console.log(props.item.mblog.pics)
+    // }
+    return (
         <div className="card m-panel card9 weibo-member">
             <div className="card-wrap">
                 <div className="card-main">
@@ -80,7 +84,7 @@ export default (props) => {
                         <a href="/" className="m-img-box">
                             <img alt="" src={props.item.mblog.user.profile_image_url} />
                             {/* 认证 */}
-                            <i className="m-icon m-icon-yellowv"></i>
+                            {/* <i className="m-icon m-icon-yellowv"></i> */}
                         </a>
                         <div className="m-box-col m-box-dir m-box-center">
                             <div className="m-text-box">
@@ -94,23 +98,25 @@ export default (props) => {
                     </header>
                     <article className="weibo-main">
                         <div className="weibo-og">
-                            <div className="weibo-text" dangerouslySetInnerHTML={{ __html: props.item.mblog.text }}>
-                            </div>
+                            <div className="weibo-text" dangerouslySetInnerHTML={{ __html: props.item.mblog.text }}></div>
                             <div>
                                 <div className="weibo-media-wraps weibo-media media-b">
-                                    <ul className="m-auto-list">
-                                        {/* {props.item.mblog.pics||[].map(li => {
-                                            return (
-                                                <li className="m-auto-box" key={li.pid} >
-                                                    <div className="m-img-box m-imghold-square">
-                                                        <img alt={li.pid} src={li.url} />
-                                                    </div>
-                                                </li>
-                                            )
-                                        })} */}
+                                    {
+                                        props.item.mblog.pics?
+                                        <ul className="m-auto-list">
+                                            {props.item.mblog.pics.map(li => {
+                                                return (
+                                                    <li className="m-auto-box" key={li.pid} >
+                                                        <div className="m-img-box m-imghold-square">
+                                                            <img src={li.url} />
+                                                        </div>
+                                                    </li>
+                                                )
+                                            })}
 
-                                    </ul>
-
+                                        </ul>
+                                        :''
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -118,6 +124,5 @@ export default (props) => {
                 </div>
             </div>
         </div>
-    </>
     )
 }

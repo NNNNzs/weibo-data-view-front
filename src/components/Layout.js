@@ -28,16 +28,39 @@ export default class Layout extends React.Component {
                     </div>
                     <Decoration8 reverse={true} className="width30" />
                 </div>
-                <div className="row1">
-                    <div className="width30">
-                    </div>
-                    <div className="width40">
-                        <BorderBox3
-                            color={['rgb(62,150,165)', 'rgb(62,150,165)']}
-                            backgroundColor='black'
-                        >
-                            <WordCloud onOnchange={(keyword) => { this.changeLine(keyword) }} />
-                        </BorderBox3>
+                <div className="mainContent">
+                    <div className="width70">
+                        <div className="row1">
+                            <div className="width40">
+                                <BorderBox3
+                                    color={['rgb(62,150,165)', 'rgb(62,150,165)']}
+                                    backgroundColor='black'
+                                >
+                                    <WordCloud onOnchange={(keyword) => { this.changeLine(keyword) }} />
+                                </BorderBox3>
+                            </div>
+                            <div className="width60">
+
+                            </div>
+                        </div>
+                        <div className="row2">
+                            <div className="width40">
+                                <BorderBox3
+                                    color={['rgb(62,150,165)', 'rgb(62,150,165)']}
+                                    backgroundColor='black'
+                                >
+                                    <Rank />
+                                </BorderBox3>
+                            </div>
+                            <div className="width60">
+                                <BorderBox3
+                                    color={['rgb(62,150,165)', 'rgb(62,150,165)']}
+                                    backgroundColor='black'
+                                >
+                                    <Line keyword={this.state.keyword} />
+                                </BorderBox3>
+                            </div>
+                        </div>
                     </div>
                     <div className="width30">
                         <BorderBox3
@@ -50,28 +73,6 @@ export default class Layout extends React.Component {
                         </BorderBox3>
                     </div>
                 </div>
-                <div className="row2">
-                    <div className="width30"></div>
-                    <div className="width40">
-                        <BorderBox3
-                            color={['rgb(62,150,165)', 'rgb(62,150,165)']}
-                            backgroundColor='black'
-                        >
-                            <Line keyword={this.state.keyword} />
-
-                        </BorderBox3>
-
-                    </div>
-                    <div className="width30">
-                        <BorderBox3
-                            color={['rgb(62,150,165)', 'rgb(62,150,165)']}
-                            backgroundColor='black'
-                        >
-                            <Rank />
-                        </BorderBox3>
-                    </div>
-                </div>
-
             </div>
         )
     }

@@ -13,6 +13,7 @@ export default class MyIframe extends React.Component {
             index: 0
         }
         this.dom = null
+        this.timer = null
     }
     getData(keyword) {
         axios({
@@ -35,12 +36,13 @@ export default class MyIframe extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.keyword && this.props.keyword !== this.state.keyword) {
             const { keyword } = this.props;
-            this.setState({ keyword });
+            this.setState({ keyword,index:0 });
             this.getData(keyword)
         }
     }
     autoScroll() {
-        setInterval(() => {
+        clearInterval(this.timer)
+        this.timer = setInterval(() => {
             let { index, list } = this.state;
             const dom = this.dom.querySelectorAll('.card')[index];
             dom.scrollIntoView({ behavior: "smooth" })
@@ -52,10 +54,7 @@ export default class MyIframe extends React.Component {
                 index++
             }
             this.setState({ index })
-        }, 5000)
-    }
-    componentDidMount() {
-
+        }, 4000)
     }
     render() {
         return (
