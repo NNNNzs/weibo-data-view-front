@@ -16,7 +16,7 @@ module.exports = function (app) {
     app.use(proxy.createProxyMiddleware('/weibo',
         {
             //需要转发的请求
-            target: 'http://127.0.0.1:7001',  //接口服务器地址
+            target: 'https://egg.nnnnzs.cn',  //接口服务器地址
             changeOrigin: true,
             pathRewrite: {
                 '^/weibo': '/weibo'
@@ -29,6 +29,15 @@ module.exports = function (app) {
             changeOrigin: true,
             pathRewrite: {
                 '^/api/container': '/api/container'
+            },
+        }))
+        app.use(proxy.createProxyMiddleware('/orj360',
+        {
+            //需要转发的请求
+            target: 'https://wx2.sinaimg.cn',  //接口服务器地址
+            changeOrigin: true,
+            pathRewrite: {
+                '^/orj360': '/orj360'
             },
         }))
 };

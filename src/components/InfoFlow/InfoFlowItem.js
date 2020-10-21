@@ -63,6 +63,11 @@ export class InfoFlowItem extends React.Component {
     }
 }
 
+function replaceImg(url){
+    // https://wx2.sinaimg.cn/orj360/007Wgp9lgy1gjx1fi68d8j30qy0zcqv5.jpg
+    return url.match(/\/orj360.+/ig)[0];
+
+}
 export default (props) => {
     // if(props.item.mblog.pics){
     //     console.log(props.item.mblog.user.screen_name)
@@ -108,7 +113,7 @@ export default (props) => {
                                                 return (
                                                     <li className="m-auto-box" key={li.pid} >
                                                         <div className="m-img-box m-imghold-square">
-                                                            <img src={li.url} />
+                                                            <img src={replaceImg(li.url)} alt="" />
                                                         </div>
                                                     </li>
                                                 )
