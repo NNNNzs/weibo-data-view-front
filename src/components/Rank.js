@@ -14,6 +14,9 @@ export default class Rank extends React.Component {
     }
     componentDidMount(){
         this.getData()
+        setInterval(()=>{
+            this.getData()
+        },1000*60*5)
     }
     getData() {
         fetch('/weibo/getCurrentTop')

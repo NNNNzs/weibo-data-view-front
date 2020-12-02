@@ -57,9 +57,9 @@ export default class MyWordCloud extends React.Component {
     }
     componentDidMount() {
         this.getData()
-        // setInterval(()=>{
-        //     this.getData()
-        // },10000)
+        setInterval(()=>{
+            this.getData()
+        },1000*60*5)
     }
     render() {
         return <div style={{ width: '100%', height: '100%' }} ref={ref => { this.myDom = ref }}></div>

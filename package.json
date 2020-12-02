@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@antv/g2plot": "^2.0.3",
+    "@antv/l7": "^2.3.1",
     "@babel/core": "7.9.0",
     "@jiaminghi/data-view-react": "1.2.3",
     "@svgr/webpack": "4.3.3",
@@ -70,7 +71,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "publish":"./scripts/publish.sh"
+    "publish": "./scripts/publish.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

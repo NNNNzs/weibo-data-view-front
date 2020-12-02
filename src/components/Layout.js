@@ -6,6 +6,7 @@ import WordCloud from './WordCloud'
 import Line from './Line'
 // import MyIframe from './iframe'
 import InfoFlow from './InfoFlow/index.js'
+import UseLessMap from './UseLessMap'
 
 export default class Layout extends React.Component {
     constructor(props) {
@@ -40,7 +41,12 @@ export default class Layout extends React.Component {
                                 </BorderBox3>
                             </div>
                             <div className="width60">
-
+                            <BorderBox3
+                                    color={['rgb(62,150,165)', 'rgb(62,150,165)']}
+                                    backgroundColor='black'
+                                >
+                                <UseLessMap />
+                                </BorderBox3>
                             </div>
                         </div>
                         <div className="row2">
