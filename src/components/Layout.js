@@ -68,7 +68,6 @@ export default class Layout extends React.Component {
                             backgroundColor='black'
                             className='scroll'
                         >
-                            {/* <MyIframe keyword={this.state.keyword} /> */}
                             <InfoFlow keyword={this.state.keyword} />
                         </BorderBox3>
                     </div>

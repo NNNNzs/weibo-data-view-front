@@ -2,14 +2,11 @@ import React from 'react';
 import { WordCloud } from '@antv/g2plot';
 
 export default class MyWordCloud extends React.Component {
-    constructor(props) {
-        super(props)
-        this.myDom = null;
-        this.state = {
-            list: []
-        }
-        this.timer = null
-    }
+    myDom = null;
+    state = {
+        list:[]
+    };
+    timer = null;
     getRandomTitle() {
         this.setKeyword()
         setInterval(() => {
@@ -20,7 +17,7 @@ export default class MyWordCloud extends React.Component {
         let keyword = this.state.list.shift();
         this.props.onOnchange(keyword)
     }
-    componentDidMount() {
+    getData(){
         fetch('/weibo/getCurrentTop')
             .then(res => res.json())
             .then(list => {
@@ -57,6 +54,12 @@ export default class MyWordCloud extends React.Component {
 
                 wordCloud.render();
             })
+    }
+    componentDidMount() {
+        this.getData()
+        // setInterval(()=>{
+        //     this.getData()
+        // },10000)
     }
     render() {
         return <div style={{ width: '100%', height: '100%' }} ref={ref => { this.myDom = ref }}></div>
