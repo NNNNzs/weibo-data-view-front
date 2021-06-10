@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
 import Screen from './components/Screen'
+// import Screen from './components/cards/index'
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

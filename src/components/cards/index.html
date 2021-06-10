@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-color: #0d2d58;
+      --card-bg-color: #13315e;
+      --sub-color: #1b376c;
+      --border-color: #26578f;
+    }
+
+    ul,
+    ol,
+    li {
+      list-style: none;
+    }
+
+    h3 {
+      color: #fff;
+    }
+
+    .wrapper {
+      padding: 2em;
+      background-color: var(--bg-color);
+      color: #fff;
+    }
+
+    .searchBar {
+      color: gray;
+    }
+
+    .searchBar ul {
+      display: inline-flex;
+      flex-direction: row;
+    }
+
+    .searchBar ul li {
+      background-color: var(--sub-color);
+      padding: 0 20px;
+      line-height: 2em;
+      margin-right: 1em;
+      cursor: pointer;
+    }
+
+    .cardWrap {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      margin-top: 2em;
+    }
+
+    .cardWrap .card {
+      width: 32%;
+      margin-right: 1%;
+      height: 200px;
+      border-radius: 3px;
+      background-color: var(--card-bg-color);
+      border: 1px solid transparent;
+      box-shadow: 0px 0px 2px #000;
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1em;
+    }
+
+    .cardWrap .card:hover {
+      border: 1px solid var(--border-color);
+    }
+
+    .card h4 {
+      display: inline-block;
+    }
+
+    .card .content {
+      display: flex;
+      flex-direction: row;
+      flex: 1;
+    }
+
+    .card .content .info,
+    .card .content .modules {
+      height: 100%;
+    }
+
+    .card .content .info {
+      color: gray;
+      padding-top: 2em;
+      width: 40%;
+    }
+
+    .card .content .info .info-item span {
+      line-height: 2em;
+      color: #fff;
+    }
+
+    .card .content .modules {
+      position: relative;
+      text-align: center;
+      width: 60%;
+      flex: 1;
+    }
+
+    .modules .module1,
+    .modules .module2 {
+      position: absolute;
+      display: flex;
+      font-size: 0.5em;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 2;
+    }
+
+    .modules .line {
+      position: absolute;
+      width: 60%;
+      height: 2px;
+      background-color: red;
+      bottom: 5em;
+      left: 4em;
+      transform: rotateZ(-20deg);
+      z-index: 1;
+    }
+
+    .modules .line::after {
+      position: absolute;
+      content: '';
+      content: "";
+      width: 0;
+      height: 0;
+      top: -5px;
+      left: 40%;
+      border-width: 0 0 10px 10px;
+      border-style: solid;
+      border-color: transparent transparent yellow;
+      transform: rotateZ(-45deg);
+    }
+
+    .modules .module1 {
+      left: 0;
+      bottom: 2em;
+    }
+
+    .modules .module2 {
+      right: 0;
+      top: 2em;
+    }
+
+    .modules .img {
+      width: 40px;
+      height: 40px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <h3>异常光模块</h3>
+
+    <div class="searchBar">
+      <span>时间范围</span>
+      <input type="date">
+      <ul>
+        <li>当前</li>
+        <li>近一天</li>
+        <li>近七天</li>
+      </ul>
+    </div>
+
+    <ul class="cardWrap">
+      <li class="card">
+        <div class="title">
+          <h4>BorderLeaf-10GE1/0/1</h4>
+          <span>收光功率异常</span>
+        </div>
+        <div class="content">
+          <ul class="info">
+            <li class="info-item">
+              光模块厂商:
+              <span>华为</span>
+            </li>
+            <li class="info-item">
+              检测时间
+              <span>2021年06月08日</span>
+            </li>
+          </ul>
+          <div class="modules">
+            <div class="module1">
+              <div class="img"></div>
+              <p>BorderLeaf-10Ge1/0/1</p>
+            </div>
+            <div class="line"></div>
+            <div class="module2">
+              <div class="img"></div>
+              <p>BorderLeaf-10Ge1/0/2</p>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const cardWrap = document.querySelector('.cardWrap');
+    const card = document.querySelector('.cardWrap .card');
+    cardWrap.appendChild(card);
+
+    let i = 0
+    while (i++ < 10) {
+      const c = document.createElement('li');
+      c.classList.add('card')
+      c.innerHTML = card.innerHTML
+      cardWrap.appendChild(c);
+    }
+  </script>
+</body>
+
+</html>

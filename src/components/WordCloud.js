@@ -6,7 +6,9 @@ export default class MyWordCloud extends React.Component {
     state = {
         list:[]
     };
+    hasCreate=false;
     timer = null;
+    wordCloud = null;
     getRandomTitle() {
         this.setKeyword()
         setInterval(() => {
@@ -28,8 +30,7 @@ export default class MyWordCloud extends React.Component {
                     list: list.map(e => e.title)
                 })
                 this.getRandomTitle()
-
-                const wordCloud = new WordCloud(container, {
+                const options = {
                     data: list,
                     autoFit: true,
                     wordField: 'title',
@@ -50,9 +51,18 @@ export default class MyWordCloud extends React.Component {
                             },
                         },
                     },
-                });
+                }
+                const wordCloud = new WordCloud(container,options);
 
-                wordCloud.render();
+                if(!this.hasCreate){
+                    wordCloud.render();
+                    this.hasCreate = true;
+                }else{
+                    wordCloud.changeData(list)
+                    // wordCloud.destroy()
+                    // wordCloud.render();
+                }
+                
             })
     }
     componentDidMount() {
@@ -62,7 +72,7 @@ export default class MyWordCloud extends React.Component {
         },1000*60*5)
     }
     render() {
-        return <div style={{ width: '100%', height: '100%' }} ref={ref => { this.myDom = ref }}></div>
+        return <div onClick={()=>{this.getData()}} style={{ width: '100%', height: '100%' }} id="idid" ref={ref => { this.myDom = ref }}></div>
 
     }
 }

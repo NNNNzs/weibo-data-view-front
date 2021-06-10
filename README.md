@@ -3,7 +3,7 @@
 微博热大屏幕
 
 ## 预览
-[http://datav.nnnnzs.cn](datav.nnnnzs.cn)
+[http://datav.nnnnzs.cn](http://datav.nnnnzs.cn)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
