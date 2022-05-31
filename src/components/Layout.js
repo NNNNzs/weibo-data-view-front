@@ -24,7 +24,7 @@ export default class Layout extends React.Component {
                 <div className="header">
                     <Decoration8 className="width30" />
                     <div className="title">
-                        <h1>数据大屏幕</h1>
+                        <h1>微博舆情监控</h1>
                         <Decoration5 style={{ height: '40px', color: 'white', display: 'block' }}></Decoration5>
                     </div>
                     <Decoration8 reverse={true} className="width30" />

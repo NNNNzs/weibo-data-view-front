@@ -14,7 +14,8 @@ export const getFrame = ({ keyword, page = 1 }) => {
         url: 'https://m.weibo.cn/api/container/getIndex',
         data: {
             page_type: 'searchall',
-            containerid: `100103type=1&q=${keyword}`,
+            containerid: `100103type=1`,
+            q: keyword,
             page: page
         }
     }).then(res => {

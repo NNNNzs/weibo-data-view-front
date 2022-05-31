@@ -29,6 +29,7 @@ export default class UseLessMap extends React.Component {
         zoom: 2.9142882493605033
       })
     });
+    
     scene.on('loaded', () => {
       fetch('https://gw.alipayobjects.com/os/rmsportal/UEXQMifxtkQlYfChpPwT.txt')
         .then(res => res.text())
