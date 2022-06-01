@@ -29,7 +29,7 @@ export default class UseLessMap extends React.Component {
         zoom: 2.9142882493605033
       })
     });
-    
+
     scene.on('loaded', () => {
       fetch('https://gw.alipayobjects.com/os/rmsportal/UEXQMifxtkQlYfChpPwT.txt')
         .then(res => res.text())
@@ -37,15 +37,7 @@ export default class UseLessMap extends React.Component {
           const layer = new LineLayer({
             blend: 'normal'
           })
-            .source(data, {
-              parser: {
-                type: 'csv',
-                x: 'lng1',
-                y: 'lat1',
-                x1: 'lng2',
-                y1: 'lat2'
-              }
-            })
+            .source(data)
             .size(1)
             .shape('greatcircle')
             .animate({

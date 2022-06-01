@@ -9,7 +9,7 @@ const collegMblog = (list = []) => {
 
         if (item.mblog) {
             blogList.push(item)
-        } 
+        }
         else if (item.card_group) {
             item.card_group.forEach(iitem => {
                 if (iitem.mblog) {
@@ -64,19 +64,19 @@ export default class MyIframe extends React.Component {
     }
     autoScroll() {
         clearInterval(this.timer)
-        // this.timer = setInterval(() => {
-        //     let { index, list } = this.state;
-        //     const dom = this.dom.querySelectorAll('.card')[index];
-        //     dom.scrollIntoView({ behavior: "smooth" })
-        //     if (index + 1 === list.length) {
-        //         index = 0
-        //     } if (index + 5 === list.length) {
-        //         //todo 增加信息流
-        //     } else {
-        //         index++
-        //     }
-        //     this.setState({ index })
-        // }, 4000)
+        this.timer = setInterval(() => {
+            let { index, list } = this.state;
+            const dom = this.dom.querySelectorAll('.card')[index];
+            dom.scrollIntoView({ behavior: "smooth" })
+            if (index + 1 === list.length - 2) {
+                index = 0
+            } if (index + 5 === list.length) {
+                //todo 增加信息流
+            } else {
+                index++
+            }
+            this.setState({ index })
+        }, 4000)
     }
     render() {
         return (

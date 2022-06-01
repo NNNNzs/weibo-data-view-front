@@ -26,11 +26,17 @@ export default class MyLine extends React.Component {
                 data = data.map(e => {
                     return {
                         num: e.num,
+                        tip: moment(e.time).format('YYYY-MM-DD HH:mm:ss'),
                         dateTime: moment(e.time).format('HH:mm:ss')
                     }
                 })
+                const max = 10
                 if (this.line) {
                     this.line.changeData(data)
+                    this.line.update({
+                        xAxis: { text: keyword },
+                        slider: data.length > max ? {} : undefined
+                    })
                     return true
                 }
                 const line = new Line(this.dom, {
@@ -39,10 +45,16 @@ export default class MyLine extends React.Component {
                     xField: 'dateTime',
                     yField: 'num',
                     theme: 'dark',
-                    title: keyword,
+                    tooltip: {
+                        fields: ['num', 'tip']
+                    },
+                    title: { text: keyword },
                     xAxis: {
+                        title: { text: keyword },
                         tickCount: 10,
                     },
+                    // slider: {}
+                    slider: data.length > max ? {} : undefined
                 });
                 this.line = line;
                 line.render();
