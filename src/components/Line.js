@@ -1,7 +1,9 @@
 import React from 'react';
 // import { Loading, ScrollRankingBoard } from '@jiaminghi/data-view-react'
-import { Line } from '@antv/g2plot';
+import { Line, G2 } from '@antv/g2plot';
 import moment from 'moment'
+let maxNum = 0, minNum = 0;
+
 
 export default class MyLine extends React.Component {
     constructor(props) {
@@ -23,21 +25,33 @@ export default class MyLine extends React.Component {
         fetch(`/weibo/getTopByTitle?title=${keyword}`)
             .then((res) => res.json())
             .then((data) => {
+                const yearSet = new Set()
+                const daySet = new Set();
                 data = data.map(e => {
+                    yearSet.add(moment(e.date).year())
+                    daySet.add(moment(e.date).day());
+                    if (e.num >= maxNum) {
+                        maxNum = e.num
+                    }
+                    if (e.num <= minNum) {
+                        minNum = e.num
+                    }
                     return {
                         num: e.num,
                         tip: moment(e.time).format('YYYY-MM-DD HH:mm:ss'),
                         dateTime: moment(e.time).format('HH:mm:ss')
                     }
                 })
+
                 const max = 10
                 if (this.line) {
-                    this.line.changeData(data)
-                    this.line.update({
-                        xAxis: { text: keyword },
-                        slider: data.length > max ? {} : undefined
-                    })
-                    return true
+                    this.line.destroy()
+                    // this.line.changeData(data)
+                    // this.line.update({
+                    //     xAxis: { text: keyword },
+                    //     slider: data.length > max ? {} : undefined
+                    // })
+                    // return true
                 }
                 const line = new Line(this.dom, {
                     data,

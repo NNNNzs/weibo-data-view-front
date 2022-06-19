@@ -67,6 +67,12 @@ export default class MyIframe extends React.Component {
         this.timer = setInterval(() => {
             let { index, list } = this.state;
             const dom = this.dom.querySelectorAll('.card')[index];
+            if (!dom) {
+                index = 0;
+                this.setState({ index })
+                return;
+            }
+
             dom.scrollIntoView({ behavior: "smooth" })
             if (index + 1 === list.length - 2) {
                 index = 0

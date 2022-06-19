@@ -1,1 +1,1 @@
-npm run build && scp -r build/* root@nnnnzs.cn:/www/wwwroot/datav.nnnnzs.cn
+npm run build && scp -r build/* root@vpc.nnnnzs.cn:/www/wwwroot/datav.nnnnzs.cn
