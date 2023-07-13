@@ -35,14 +35,14 @@ export default (props) => {
 
                     </div> */}
                     <header className="weibo-top m-box m-avatar-box">
-                        <a href="/" className="m-img-box">
+                        <a  target='_blank' rel="noopener noreferrer" href={user.profile_url} className="m-img-box">
                             <img alt="" src={replaceImg(user.profile_image_url)} />
                             {/* 认证 */}
                             {/* <i className="m-icon m-icon-yellowv"></i> */}
                         </a>
                         <div className="m-box-col m-box-dir m-box-center">
                             <div className="m-text-box">
-                                <a href="/">
+                                <a href={user.profile_url} target='_blank' rel="noopener noreferrer">
                                     <h3 className="m-text-cut">{user.screen_name}</h3>
                                 </a>
                                 <h4 className="m-text-cut"><span className="time">{formatDate(mblog.created_at)}</span><span className="from"> 来自 {mblog.source} {mblog.region_name}</span>
