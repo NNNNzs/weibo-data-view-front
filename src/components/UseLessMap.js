@@ -27,7 +27,6 @@ export default class UseLessMap extends React.Component {
   }
 
   async componentDidMount() {
-    console.log(this.props.infoList);
     await this.getRegion();
     this.createScene();
   }
@@ -85,8 +84,12 @@ export default class UseLessMap extends React.Component {
   }
   getData() {
     const data = this.linData;
-    console.log("data", data);
-
+    if (!this.scene || !this.geoData) {
+      setTimeout(() => {
+        this.getData()
+      }, 100);
+      return;
+    }
     const layer = new LineLayer({
       blend: "normal",
     })
