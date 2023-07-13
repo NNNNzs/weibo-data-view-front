@@ -36,7 +36,7 @@ export default (props) => {
                     </div> */}
                     <header className="weibo-top m-box m-avatar-box">
                         <a href="/" className="m-img-box">
-                            <img alt="" src={user.profile_image_url} />
+                            <img alt="" src={replaceImg(user.profile_image_url)} />
                             {/* 认证 */}
                             {/* <i className="m-icon m-icon-yellowv"></i> */}
                         </a>
