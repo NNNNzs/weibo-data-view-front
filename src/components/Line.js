@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Loading, ScrollRankingBoard } from '@jiaminghi/data-view-react'
-import { Line, G2 } from '@antv/g2plot';
+import { Line } from '@antv/g2plot';
 import moment from 'moment'
 let maxNum = 0, minNum = 0;
 
